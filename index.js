@@ -1,5 +1,11 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://pajaronelijahsebastian:3RXkw6TBrq2jGBKx@informationsystem.tqmdbde.mongodb.net/?retryWrites=true&w=majority&appName=informationsystem').
+then(() =>{
+    console.log('Connected to MongoDb...')
+});
 
 const EmployeeRoute = require('./Routes/Employee.route');
 app.use(('/employee'), EmployeeRoute);
