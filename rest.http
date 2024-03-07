@@ -1,0 +1,27 @@
+
+### GET ALL employee
+GET http://localhost:3000/employee
+
+### POST employee
+POST http://localhost:3000/employee
+
+### GET single employee
+GET http://localhost:3000/employee/id
+
+### PATCH single employee
+PATCH http://localhost:3000/employee/id
+
+### DELETE SINGLE employee
+DELETE http://localhost:3000/employee/id
+
+### GET ALL user
+GET http://localhost:3000/user
+
+### GET ALL DEPARTMENT
+GET http://localhost:3000/department
+
+### POST DEPARTMENT
+POST http://localhost:3000/department
+
+### TEST FOR WRONG ENDPOINT
+GET http://localhost:3000/employeeeeee
