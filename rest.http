@@ -1,18 +1,43 @@
-
 ### GET ALL employee
 GET http://localhost:3000/employee
 
-### POST employee
-POST http://localhost:3000/employee
-
-### GET single employee
+### GET employee by ID
 GET http://localhost:3000/employee/id
 
+### POST employee
+POST http://localhost:3000/employee
+Content-Type: application/json
+
+{
+    "name": "Pajaron",
+    "age": 12
+}
+
+
 ### PATCH single employee
-PATCH http://localhost:3000/employee/id
+PATCH http://localhost:3000/employee/65eea99654921a0e28dcaa1e
+Content-Type: application/json
+
+{
+    "name": "Elijah",
+    "age" : 1000
+}
 
 ### DELETE SINGLE employee
 DELETE http://localhost:3000/employee/id
+
+# --------------------------------------------------------------
+
+###  post USER
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "username": "EliasBerd",
+    "password": "123456",
+    "email_address": "espajaron@gamil.com"
+
+}
 
 ### GET ALL user
 GET http://localhost:3000/user
@@ -25,3 +50,6 @@ POST http://localhost:3000/department
 
 ### TEST FOR WRONG ENDPOINT
 GET http://localhost:3000/employeeeeee
+
+### Get using query
+GET http://localhost:3000test?name=Elijah&age=23

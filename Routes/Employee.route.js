@@ -1,30 +1,71 @@
 const express = require('express');
 const router = express.Router();
+const Employee = require('../Model/Employee.model');
 
-// get all
-router.get('/', (req,res,next) =>{
-    // res.send('List of all Employees');
-    next(new Error("Cannot get all Employees"));
-});
+
 
 //post
-router.post('/', (req,res,next) =>{
-    res.send('Create a new employee');
+router.post('/', async (req,res,next) =>{
+    // res.send('Create a new employee');
+    try{
+        const employee = new Employee(req.body);
+        const result = await employee.save();
+        res.send(result);
+
+    }catch(error){
+        res.send(error.message);
+    }
 });
 
-//get single
-router.get('/:id', (req,res,next) =>{
-    res.send('List of single Employees');
+//get
+router.get('/', async (req,res,next) =>{
+    // res.send('List of single Employees');
+    try{
+        const result = await Employee.find({},{__v:0});
+        res.send(result);
+    }catch(error){
+        res.send(error.message)
+
+    }
 });
 
-//patch single
-router.patch('/:id', (req,res,next) =>{
-    res.send('Patch a single');
+//get by id
+router.get('/:id', async (req,res,next) =>{
+    // res.send('List of single Employees');
+    const id = req.params.id;
+    try{
+        const result = await Employee.findById(id);
+        res.send(result);
+    }catch(error){
+        res.send(error.message)
+
+    }
+});
+
+//patch by id
+router.patch('/:id', async (req,res,next) =>{
+    
+    try{
+        const id = req.params.id;
+        const update = req.body;
+        const result = await Employee.findByIdAndUpdate(id, update);
+        res.send(result);
+
+    }catch(error){
+        res.send(error.message)
+    }
 });
 
 //delete
-router.delete('/:id', (req,res,next) =>{
-    res.send('Delete a employee');
+router.delete('/:id', async (req,res,next) =>{
+    const id = req.params.id;
+    try{
+        const result = await Employee.findByIdAndDelete(id);
+        res.send(result);
+    }catch(error){
+        res.send(error.message)
+
+    }
 });
 
 module.exports = router;

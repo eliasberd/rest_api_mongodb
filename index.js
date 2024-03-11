@@ -2,9 +2,23 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://pajaronelijahsebastian:3RXkw6TBrq2jGBKx@informationsystem.tqmdbde.mongodb.net/?retryWrites=true&w=majority&appName=informationsystem').
-then(() =>{
-    console.log('Connected to MongoDb...')
+app.use(express.json()); // for params
+app.use(express.urlencoded({extended: true})); //for query
+
+mongoose.connect('mongodb+srv://informationsystem.tqmdbde.mongodb.net/RestAPI',
+{
+    appName: 'informationsystem',
+    user: 'pajaronelijahsebastian',
+    pass: 'kpNF3ifW5Ft7i6PO'
+
+})
+.then(() =>{
+    console.log('Connected to MongoDb...');
+});
+
+app.all('/test', (req,res) =>{
+    console.log(req.query);
+    res.send(req.query);
 });
 
 const EmployeeRoute = require('./Routes/Employee.route');
